@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pokedex.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @pokedex.type %>
+</p>
+
+<p>
+  <strong>Hp:</strong>
+  <%= @pokedex.hp %>
+</p>
+
+<p>
+  <strong>Def:</strong>
+  <%= @pokedex.def %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @pokedex.image %>
+</p>
+
+<%= link_to 'Edit', edit_pokedex_path(@pokedex) %> |
+<%= link_to 'Back', pokedexes_path %>
