@@ -30,16 +30,18 @@ types_hash.each do |(key)|
   new_type = Type.create(poke_type: key['english'],
                          chinese: key['chinese'],
                          japanese: key['japanese'])
-
   puts new_type.inspect
 end
 
 poke_hash.each do |(key)|
-  new_poke = Pokedex.create(name: key['name']['english'],
-                            poke_type: key['type'])
-  puts key
-  puts '-------------------'
-  puts ' '
+  new_poke = Pokedex.create(name: key['name'],
+                            hp: key['base']['HP'],
+                            att: key['base']['Attack'],
+                            def: key['base']['Defense'],
+                            image: key['id'])
+  puts new_poke.inspect
 end
+
 puts Type.count
 puts Item.count
+puts Pokedex.count
