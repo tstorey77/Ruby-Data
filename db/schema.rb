@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 2020_02_26_025808) do
   end
 
   create_table "poketypes", force: :cascade do |t|
-    t.integer "pokedexs_id", null: false
-    t.integer "types_id", null: false
+    t.integer "pokedex_id", null: false
+    t.integer "type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["pokedexs_id"], name: "index_poketypes_on_pokedexs_id"
-    t.index ["types_id"], name: "index_poketypes_on_types_id"
+    t.index ["pokedex_id"], name: "index_poketypes_on_pokedex_id"
+    t.index ["type_id"], name: "index_poketypes_on_type_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -50,6 +50,6 @@ ActiveRecord::Schema.define(version: 2020_02_26_025808) do
   end
 
   add_foreign_key "moves", "types"
-  add_foreign_key "poketypes", "pokedexs", column: "pokedexs_id"
-  add_foreign_key "poketypes", "types", column: "types_id"
+  add_foreign_key "poketypes", "pokedexes"
+  add_foreign_key "poketypes", "types"
 end
