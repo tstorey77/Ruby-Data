@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Move < ApplicationRecord
-  belongs_to :types, foreign_key: :poke_type
+  belongs_to :type
 
-  validates :name, presence: true
-  validates :poke_type, presence: true
+  validates :name, presence: true, uniqueness: true
 end

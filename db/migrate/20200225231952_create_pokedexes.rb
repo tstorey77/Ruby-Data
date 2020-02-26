@@ -4,7 +4,6 @@ class CreatePokedexes < ActiveRecord::Migration[6.0]
   def change
     create_table :pokedexes do |t|
       t.string :name
-      t.references :poke_type, foreign_key: true
       t.integer :hp
       t.integer :att
       t.integer :def

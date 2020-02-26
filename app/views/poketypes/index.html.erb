@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Poketypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Poke</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @poketypes.each do |poketype| %>
+      <tr>
+        <td><%= poketype.poke_id_id %></td>
+        <td><%= poketype.type_id_id %></td>
+        <td><%= link_to 'Show', poketype %></td>
+        <td><%= link_to 'Edit', edit_poketype_path(poketype) %></td>
+        <td><%= link_to 'Destroy', poketype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Poketype', new_poketype_path %>

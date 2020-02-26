@@ -10,34 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_232758) do
-
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2020_02_26_025808) do
 
   create_table "moves", force: :cascade do |t|
     t.string "name"
     t.integer "power"
     t.integer "pp"
-    t.integer "poke_type_id"
+    t.integer "type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["poke_type_id"], name: "index_moves_on_poke_type_id"
+    t.index ["type_id"], name: "index_moves_on_type_id"
   end
 
   create_table "pokedexes", force: :cascade do |t|
     t.string "name"
-    t.integer "poke_type_id"
     t.integer "hp"
     t.integer "att"
     t.integer "def"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["poke_type_id"], name: "index_pokedexes_on_poke_type_id"
+  end
+
+  create_table "poketypes", force: :cascade do |t|
+    t.integer "pokedexs_id", null: false
+    t.integer "types_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pokedexs_id"], name: "index_poketypes_on_pokedexs_id"
+    t.index ["types_id"], name: "index_poketypes_on_types_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_232758) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "moves", "poke_types"
-  add_foreign_key "pokedexes", "poke_types"
+  add_foreign_key "moves", "types"
+  add_foreign_key "poketypes", "pokedexs", column: "pokedexs_id"
+  add_foreign_key "poketypes", "types", column: "types_id"
 end

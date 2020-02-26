@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Poke:</strong>
+  <%= @poketype.poke_id_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @poketype.type_id_id %>
+</p>
+
+<%= link_to 'Edit', edit_poketype_path(@poketype) %> |
+<%= link_to 'Back', poketypes_path %>

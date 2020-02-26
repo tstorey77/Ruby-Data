@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Pokedex < ApplicationRecord
-  has_many :types, foreign_key: :poke_type
+  has_many :poketypes
 
-  validates :name, presence: true
-  validates :poke_type, presence: true
+  validates :name, presence: true, uniqueness: true
 end
