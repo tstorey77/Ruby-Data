@@ -10,33 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_232123) do
+ActiveRecord::Schema.define(version: 2020_02_25_232758) do
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "moves", force: :cascade do |t|
     t.string "name"
     t.integer "power"
     t.integer "pp"
-    t.string "type"
+    t.integer "poke_type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["poke_type_id"], name: "index_moves_on_poke_type_id"
   end
 
   create_table "pokedexes", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.string "hp"
-    t.string "def"
+    t.integer "poke_type_id"
+    t.integer "hp"
+    t.integer "att"
+    t.integer "def"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["poke_type_id"], name: "index_pokedexes_on_poke_type_id"
   end
 
   create_table "types", force: :cascade do |t|
-    t.string "type"
+    t.string "poke_type"
     t.string "chinese"
     t.string "japanese"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "moves", "poke_types"
+  add_foreign_key "pokedexes", "poke_types"
 end

@@ -4,7 +4,7 @@ class CreateMoves < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :power
       t.integer :pp
-      t.string :type
+      t.references :poke_type, foreign_key: true
 
       t.timestamps
     end
