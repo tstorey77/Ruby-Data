@@ -60,6 +60,7 @@ moves_hash.each do |(key)|
   end
 end
 puts 'Done move, starting pokedex'
+
 # Load into pokedex table
 poke_hash.each do |(key)|
   new_poke = Pokedex.create(name: key['name']['english'],
@@ -69,46 +70,46 @@ poke_hash.each do |(key)|
                             image: key['id'])
   puts new_poke.inspect
 end
-puts 'Done pokedex startomg poketype'
+puts 'Done pokedex starting poketype'
 
+# load into join table : Poketypes
 # doing it the Hogwarts way
-# grab all pokemon
 poke_hash.each do |(poke)|
-  # right now its adding all of the ptypes to each pokemon
-  # see if we can check the poke type and check the ptype name and match them
-  # get the name of the poke we are currently in
   poke_name = poke['name']['english']
-  # get the pokemon object
   current_poke = Pokedex.where(name: poke_name)
   real_poke = current_poke.first
-
   if poke['type'].length > 1
     first = poke['type'][0]
     second = poke['type'][1]
     first_object = Ptype.where(poke_type: first)
-    real_first = first_object.first
     second_object = Ptype.where(poke_type: second)
+
+    real_first = first_object.first
     real_second = second_object.first
+
     first_poketype = Poketype.create(pokedex: real_poke, ptype: real_first)
     second_poketype = Poketype.create(pokedex: real_poke, ptype: real_second)
-    puts 'Two types '
-    puts first_poketype.inspect
-    puts second_poketype.inspect
+
+    # puts 'Two types '
+    # puts first_poketype.inspect
+    # puts second_poketype.inspect
   else
     first = poke['type'][0]
     object = Ptype.where(poke_type: first)
     real_object = object.first
+
     poketype_object = Poketype.create(pokedex: real_poke, ptype: real_object)
-    puts 'One type'
-    puts poketype_object.inspect
+    # puts 'One type'
+    # puts poketype_object.inspect
   end
 end
 
-puts Ptype.count
-puts Pokedex.count
-puts Poketype.count
-puts Move.count
-
+# checking to make sure all is good
+puts Ptype.count # 18
+puts Pokedex.count # 809
+puts Poketype.count # ~1200 - guessing
+puts Move.count # ~600 - guessing
+# ensure data looks ok
 puts Move.last.inspect
 puts Pokedex.last.inspect
 puts Ptype.last.inspect
