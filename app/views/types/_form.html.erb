@@ -1,10 +1,10 @@
-<%= form_with(model: type, local: true) do |form| %>
-  <% if type.errors.any? %>
+<%= form_with(model: ptype, local: true) do |form| %>
+  <% if ptype.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(type.errors.count, "error") %> prohibited this type from being saved:</h2>
+      <h2><%= pluralize(ptype.errors.count, "error") %> prohibited this ptype from being saved:</h2>
 
       <ul>
-        <% type.errors.full_messages.each do |message| %>
+        <% ptype.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :type %>
+    <%= form.label :ptype %>
+    <%= form.text_field :ptype %>
   </div>
 
   <div class="field">

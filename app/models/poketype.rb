@@ -2,8 +2,8 @@
 
 class Poketype < ApplicationRecord
   belongs_to :pokedex
-  belongs_to :type
+  belongs_to :ptype
 
-  validates :poketype_id, presence: true
-  validates :type_id, presence: true
+  validates :pokedex_id, presence: true
+  validates :ptype_id, presence: true
 end

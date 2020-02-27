@@ -6,7 +6,7 @@ class CreateMoves < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :power
       t.integer :pp
-      t.references :type, null: false, foreign_key: true
+      t.references :ptype, null: false, foreign_key: true
 
       t.timestamps
     end

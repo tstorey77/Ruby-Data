@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2020_02_26_025808) do
     t.string "name"
     t.integer "power"
     t.integer "pp"
-    t.integer "type_id", null: false
+    t.integer "ptype_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["type_id"], name: "index_moves_on_type_id"
+    t.index ["ptype_id"], name: "index_moves_on_ptype_id"
   end
 
   create_table "pokedexes", force: :cascade do |t|
@@ -34,14 +34,14 @@ ActiveRecord::Schema.define(version: 2020_02_26_025808) do
 
   create_table "poketypes", force: :cascade do |t|
     t.integer "pokedex_id", null: false
-    t.integer "type_id", null: false
+    t.integer "ptype_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pokedex_id"], name: "index_poketypes_on_pokedex_id"
-    t.index ["type_id"], name: "index_poketypes_on_type_id"
+    t.index ["ptype_id"], name: "index_poketypes_on_ptype_id"
   end
 
-  create_table "types", force: :cascade do |t|
+  create_table "ptypes", force: :cascade do |t|
     t.string "poke_type"
     t.string "chinese"
     t.string "japanese"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_025808) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "moves", "types"
+  add_foreign_key "moves", "ptypes"
   add_foreign_key "poketypes", "pokedexes"
-  add_foreign_key "poketypes", "types"
+  add_foreign_key "poketypes", "ptypes"
 end
