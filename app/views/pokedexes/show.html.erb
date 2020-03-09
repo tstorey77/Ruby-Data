@@ -1,29 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @pokedex.name %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @pokedex.type %>
-</p>
-
-<p>
-  <strong>Hp:</strong>
-  <%= @pokedex.hp %>
-</p>
-
-<p>
-  <strong>Def:</strong>
-  <%= @pokedex.def %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @pokedex.image %>
-</p>
-
+<h3 class = "title is-4"> <%= @pokedex.name %> </h3>
+<p> Hit Points: <%= @pokedex.hp %></p>
+<p> Attack: <%= @pokedex.att %> </p>
+<p> Defence: <%= @pokedex.def %> </p>
+<%= image_tag "images/" + '%03d' % @pokedex.image.to_s + ".png"%>
 <%= link_to 'Edit', edit_pokedex_path(@pokedex) %> |
 <%= link_to 'Back', pokedexes_path %>

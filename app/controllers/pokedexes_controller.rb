@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PokedexesController < ApplicationController
-  before_action :set_pokedex, only: [:show, :edit, :update, :destroy]
+  before_action :set_pokedex, only: %i[show edit update destroy]
 
   # GET /pokedexes
   # GET /pokedexes.json
@@ -10,6 +12,7 @@ class PokedexesController < ApplicationController
   # GET /pokedexes/1
   # GET /pokedexes/1.json
   def show
+    @pokedex = Pokedex.find(params[:id])
   end
 
   # GET /pokedexes/new
@@ -18,8 +21,7 @@ class PokedexesController < ApplicationController
   end
 
   # GET /pokedexes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /pokedexes
   # POST /pokedexes.json
@@ -62,13 +64,14 @@ class PokedexesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pokedex
-      @pokedex = Pokedex.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def pokedex_params
-      params.require(:pokedex).permit(:name, :type, :hp, :def, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_pokedex
+    @pokedex = Pokedex.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def pokedex_params
+    params.require(:pokedex).permit(:name, :type, :hp, :def, :image)
+  end
 end

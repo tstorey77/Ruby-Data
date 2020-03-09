@@ -1,34 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pokedexes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Hp</th>
-      <th>Def</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<h1 class="title is-4">Pokedex</h1>
+<% if @pokedexes.empty? %>
+ <p> There are no Pokemon in the Pokedex </p>
+<% else %>
+<p> All Pokemon: </p>
+<div class = "columns is-multiline">
     <% @pokedexes.each do |pokedex| %>
-      <tr>
-        <td><%= pokedex.name %></td>
-        <td><%= pokedex.type %></td>
-        <td><%= pokedex.hp %></td>
-        <td><%= pokedex.def %></td>
-        <td><%= pokedex.image %></td>
-        <td><%= link_to 'Show', pokedex %></td>
-        <td><%= link_to 'Edit', edit_pokedex_path(pokedex) %></td>
-        <td><%= link_to 'Destroy', pokedex, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+     <div class="column is-one-third">
+      <div class="card">
+        <div class="title">
+          <%= link_to pokedex.name, pokedex %>
+        </div>
+        <div class="card-content">
+          <p> Stats: </p>
+          <p class="card-footer-item"> Hit points: <%= pokedex.hp %></p>
+          <p class="card-footer-item"> Attack: <%= pokedex.att %></p>
+          <p class="card-footer-item"> Defence: <%= pokedex.def %></p>
+          <p> Type(s): </p>
+          <% pokedex.ptypes.each do |type| %>
+            <p class="card-footer-item"> <%= type.poke_type %> </p>
+          <% end %>
+        </div>
+        </div>
+      </div>
+
     <% end %>
-  </tbody>
-</table>
+</div>
+
+
+
+
+<div class = "column is-multiline">
+<div class="column is-one-third">
+  <div class="card">
+    <div class="card-content">
+      <div class="title">
+        <% @pokedexes.each do |pokedex| %>
+          <%= link_to pokedex.name, pokedex %>
+          <p class="card-footer-item"><%= pokedex.name %></p>
+          <p class="card-footer-item"><%= pokedex.hp %></p>
+          <p class="card-footer-item"><%= pokedex.def %></p>
+          <% pokedex.ptypes.each do |type| %>
+            <p class="card-footer-item"> <%= type.poke_type %> </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+
 
 <br>
 
