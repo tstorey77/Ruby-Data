@@ -12,10 +12,16 @@
 
   <body>
     <section class="section">
-      <h1 class="title"> <%= link_to 'Home', root_path %></h1>
+
+      <header>
+        <h1 class="title"> <%= link_to 'PokeDex', root_path %></h1>
+        <h2 class="subtitle"> A rather large collection of Pokemon </h2>
+      </header>
+      <br>
+      <ul>
+        <li><%= link_to 'Home', root_path %></li>
+      </ul>
     </section>
-
-
     <%= yield %>
   </body>
 </html>
