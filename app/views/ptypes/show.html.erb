@@ -1,0 +1,17 @@
+
+<div class="column">
+  <div class="card">
+    <div class="card-content">
+      <p class="title">
+        <p class="card-footer-item"> English Name: <%= @ptype.poke_type %></p>
+      </p>
+      <footer class="card-footer">
+      <p class="card-footer-item"> Chinese: <%= @ptype.chinese %></p>
+      <p class="card-footer-item"> Japanese: <%= @ptype.japanese %></p>
+    </footer>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_ptype_path(@ptype) %> |
+<%= link_to 'Back', ptypes_path %>
