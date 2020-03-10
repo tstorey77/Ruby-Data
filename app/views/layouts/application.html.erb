@@ -19,7 +19,8 @@
       </header>
       <br>
       <ul>
-        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Home', root_path %> <%= link_to 'About', about_path %></li>
+
         <li><%= render partial: 'shared/search_form'%></li>
       </ul>
     </section>

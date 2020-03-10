@@ -1,0 +1,30 @@
+<div class="title">
+  <h1>About Page</h1>
+</div>
+<div class="subtitle">
+  <p>I will be using the Pokémon JSON repository to complete this project.
+   The Pokémon repository contains JSON files on Pokémon, their moves,
+   their types, in-game items, and contains a directory loaded with images
+   relating to the Pokémon. The repository contains three JSON files that
+   I will be interested in using as well as one directory containing
+   images. I will use the Pokedex JSON file to create a Pokedex table
+   with columns, name, hp, attack, defence, and an image file name.
+   I will also be using the Types JSON file to create a Ptypes table
+   with columns, poke_type (the type. E.g. Normal, Water…), the Chinese
+   spelling, and the Japanese spelling. The Pokedex and Ptypes tables
+   have a Many-to-Many relationship. Pokémon can have many ptypes and
+   ptypes can have many Pokémon. I will be using a PokeTypes join table
+   to help facilitate this Many-to-Many relationship.
+   The PokeTypes table will hold two foreign key columns;
+   Pokedex_id, which is the auto generated ID of Pokémon that
+   matches the ptype. And, a Ptype_id column which holds the auto
+   generated ID of the ptype that matches the Pokémon.
+   I will also be using the Moves JSON file to create a Moves table
+   that contains, name, power, pp, and a foreign key named ptype_id.
+   Ptype_id contains the ID of the specific type for the move.
+   Moves and types have a One-to-Many relationship as a move can only
+   have one type, but a type can have many moves. </p>
+
+</div>
+
+<%= image_tag 'ERD.png'%>

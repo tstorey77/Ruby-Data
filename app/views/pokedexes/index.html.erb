@@ -17,7 +17,7 @@
           <p class="card-footer-item"> Defence: <%= pokedex.def %></p>
           <p> Type(s): </p>
           <% pokedex.ptypes.each do |type| %>
-            <p class="card-footer-item"> <%= type.poke_type %> </p>
+            <p class="card-footer-item"> <%= link_to type.poke_type, type %> </p>
           <% end %>
         </div>
         </div>
