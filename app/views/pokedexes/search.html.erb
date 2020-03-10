@@ -1,0 +1,6 @@
+<h3 class="title is-4"> Search results for '<%= params[:keyword]%>'</h3>
+
+<p> Found <% pluralize(@pokedexes.size, 'result')%></p>
+<%= render partial: 'pokedexes/pokedex',
+           collection: @pokedexes,
+           locals: {show_link: true} %>

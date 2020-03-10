@@ -9,6 +9,10 @@ class PokedexesController < ApplicationController
     @pokedexes = Pokedex.all
   end
 
+  def search
+    @pokedexes = Pokedex.where('name LIKE ?', "%#{params[:keyword]}%")
+  end
+
   # GET /pokedexes/1
   # GET /pokedexes/1.json
   def show

@@ -11,7 +11,9 @@ class PtypesController < ApplicationController
 
   # GET /types/1
   # GET /types/1.json
-  def show; end
+  def show
+    @ptypes = Ptype.find(params[:id])
+  end
 
   # GET /types/new
   def new
@@ -65,7 +67,7 @@ class PtypesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_ptype
-    @type = Ptype.find(params[:id])
+    @ptype = Ptype.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

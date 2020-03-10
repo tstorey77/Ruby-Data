@@ -1,1 +1,23 @@
-<p> Hello world </p>
+
+<div class="column">
+  <div class="card">
+    <div class="card-content">
+      <p class="title">
+        <% if show_link %>
+          <%= link_to pokedex.name, pokedex %>
+        <% else %>
+          <%= pokedex.name %>
+        <% end %>
+      </p>
+      <p class="subtitle"> Type(s):
+      <% pokedex.ptypes.each do |type| %>
+            <p class="card-footer-item"> <%= link_to type.poke_type, type %> </p>
+      <% end %>
+      <footer class="card-footer">
+      <p class="card-footer-item"> Hit Points: <%= pokedex.hp %></p>
+      <p class="card-footer-item"> Attack: <%= pokedex.att %></p>
+      <p class="card-footer-item"> Defence: <%= pokedex.def %></p>
+    </footer>
+    </div>
+  </div>
+</div>

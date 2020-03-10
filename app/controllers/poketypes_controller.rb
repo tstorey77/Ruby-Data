@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PoketypesController < ApplicationController
-  before_action :set_poketype, only: [:show, :edit, :update, :destroy]
+  before_action :set_poketype, only: %i[show edit update destroy]
 
   # GET /poketypes
   # GET /poketypes.json
@@ -10,6 +12,7 @@ class PoketypesController < ApplicationController
   # GET /poketypes/1
   # GET /poketypes/1.json
   def show
+    @poketypes = Poketype.find(params[:id])
   end
 
   # GET /poketypes/new
@@ -18,8 +21,7 @@ class PoketypesController < ApplicationController
   end
 
   # GET /poketypes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /poketypes
   # POST /poketypes.json
@@ -62,13 +64,14 @@ class PoketypesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_poketype
-      @poketype = Poketype.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def poketype_params
-      params.require(:poketype).permit(:poke_id_id, :type_id_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_poketype
+    @poketype = Poketype.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def poketype_params
+    params.require(:poketype).permit(:poke_id_id, :type_id_id)
+  end
 end
