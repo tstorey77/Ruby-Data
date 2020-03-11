@@ -42,7 +42,7 @@
           <% @pokeType.each do |poke_type| %>
             <% @pokemon = Pokedex.where(id: poke_type.pokedex_id) %>
             <% if @pokemon.empty? %>
-              <p> There are no Moves for the type <%= @ptype.poke_type %></p>
+              <p> There are no Pokemon for the type <%= @ptype.poke_type %></p>
             <% else %>
               <% @pokemon.each do |poke| %>
                 <p> <%= link_to poke.name, poke %> </p>
