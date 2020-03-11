@@ -10,7 +10,7 @@
           <p class="card-footer-item"> Power: <%= @move.power %></p>
           <p class="card-footer-item"> PP: <%= @move.pp %></p>
           <p> Type: </p>
-          <%= @ptypes = Ptype.where(id: @move.ptype_id).first %>
+          <% @ptypes = Ptype.where(id: @move.ptype_id).first %>
           <p class="card-footer-item"> <%= link_to @ptypes.poke_type, @ptypes %> </p>
         </div>
         </div>

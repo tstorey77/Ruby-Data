@@ -1,9 +1,22 @@
-<p id="notice"><%= notice %></p>
 
-<h3 class = "title is-4"> <%= @pokedex.name %> </h3>
-<p> Hit Points: <%= @pokedex.hp %></p>
-<p> Attack: <%= @pokedex.att %> </p>
-<p> Defence: <%= @pokedex.def %> </p>
-<%= image_tag "images/" + '%03d' % @pokedex.image.to_s + ".png"%>
-<%= link_to 'Edit', edit_pokedex_path(@pokedex) %> |
-<%= link_to 'Back', pokedexes_path %>
+<p id="notice"><%= notice %></p>
+<div class = "columns">
+  <div class="column">
+    <div class="card">
+      <div class="title">
+        <%= @pokedex.name %>
+      </div>
+      <div class="card-content">
+        <p class="card-footer-item"> <%= image_tag "images/" + '%03d' % @pokedex.image.to_s + ".png"%> </p>
+        <p> Stats: </p>
+        <p class="card-footer-item"> Hit Points: <%= @pokedex.hp %></p>
+        <p class="card-footer-item"> Attack: <%= @pokedex.att %> </p>
+        <p class="card-footer-item"> Defence: <%= @pokedex.def %> </p>
+        <p> Type: </p>
+        <% @pokedex.ptypes.each do |type| %>
+          <p class="card-footer-item"> <%= link_to type.poke_type, type %> </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
