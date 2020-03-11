@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MovesController < ApplicationController
-  before_action :set_move, only: [:show, :edit, :update, :destroy]
+  before_action :set_move, only: %i[show edit update destroy]
 
   # GET /moves
   # GET /moves.json
@@ -10,6 +12,7 @@ class MovesController < ApplicationController
   # GET /moves/1
   # GET /moves/1.json
   def show
+    @moves = Move.find(params[:id])
   end
 
   # GET /moves/new
@@ -18,8 +21,7 @@ class MovesController < ApplicationController
   end
 
   # GET /moves/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /moves
   # POST /moves.json
@@ -62,13 +64,14 @@ class MovesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_move
-      @move = Move.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def move_params
-      params.require(:move).permit(:name, :power, :pp, :type)
-    end
+  # Use callbacks to share common set or conupstraints between actions.
+  def set_move
+    @move = Move.find(params[:id])
+  end
+  
+  # Only allow a list of trusted parameters through.
+  def move_params
+    params.require(:move).permit(:name, :power, :pp, :type)
+  end
 end

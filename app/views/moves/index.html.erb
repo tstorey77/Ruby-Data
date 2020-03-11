@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 <% if @moves.empty? %>
- <p> There are no Pokemon in the Pokedex </p>
+ <p> There are no Moves in the Pokedex </p>
 <% else %>
 <div class = "columns is-multiline">
     <% @moves.each do |move| %>
      <div class="column is-one-third">
       <div class="card">
         <div class="title">
-          <%= link_to move.name, moves_path %>
+          <%= link_to move.name, move %>
         </div>
         <div class="card-content">
           <p> Stats: </p>
@@ -19,6 +19,7 @@
         </div>
       </div>
   <%end%>
-<% end %>
 </div>
+<% end %>
+
 

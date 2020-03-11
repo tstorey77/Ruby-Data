@@ -1,24 +1,19 @@
 <p id="notice"><%= notice %></p>
+<div class = "columns">
+     <div class="column">
+      <div class="card">
+        <div class="title">
+          <%= @move.name %>
+        </div>
+        <div class="card-content">
+          <p> Stats: </p>
+          <p class="card-footer-item"> Power: <%= @move.power %></p>
+          <p class="card-footer-item"> PP: <%= @move.pp %></p>
+          <p> Type: </p>
+          <%= @ptypes = Ptype.where(id: @move.ptype_id).first %>
+          <p class="card-footer-item"> <%= link_to @ptypes.poke_type, @ptypes %> </p>
+        </div>
+        </div>
+      </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @move.name %>
-</p>
-
-<p>
-  <strong>Power:</strong>
-  <%= @move.power %>
-</p>
-
-<p>
-  <strong>Pp:</strong>
-  <%= @move.pp %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @move.type %>
-</p>
-
-<%= link_to 'Edit', edit_move_path(@move) %> |
-<%= link_to 'Back', moves_path %>
