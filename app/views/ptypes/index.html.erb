@@ -1,31 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>ptypes</h1>
+<p id="notice"><%= notice %></p>
+<% if @ptypes.empty? %>
+ <p> There are no Types in the Pokedex </p>
+<% else %>
+<div class = "columns is-multiline">
+    <% @ptypes.each do |type| %>
+     <div class="column is-one-third">
+      <div class="card">
+        <div class="title">
+          <%= link_to type.poke_type, type %>
+        </div>
+        <div class="card-content">
+          <p> Stats: </p>
+          <p class="card-footer-item"> Chinese: <%= type.chinese %></p>
+          <p class="card-footer-item"> Japanese: <%= type.japanese %></p>
+        </div>
+        </div>
+      </div>
+  <%end%>
+<% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>ptype</th>
-      <th>Chinese</th>
-      <th>Japanese</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @ptypes.each do |ptype| %>
-      <tr>
-        <td><%= ptype.poke_type %></td>
-        <td><%= ptype.chinese %></td>
-        <td><%= ptype.japanese %></td>
-        <td><%= link_to 'Show', ptype %></td>
-        <td><%= link_to 'Edit', edit_ptype_path(ptype) %></td>
-        <td><%= link_to 'Destroy', ptype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New ptype', new_ptype_path %>

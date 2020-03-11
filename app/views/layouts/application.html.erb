@@ -19,7 +19,10 @@
       </header>
       <br>
       <ul>
-        <li><%= link_to 'Home', root_path %> <%= link_to 'About', about_path %></li>
+        <li><%= link_to 'Home', root_path %>
+        <%= link_to 'About', about_path %>
+        <%= link_to 'Types', type_path %>
+        <%= link_to 'Moves', moves_path %> </li>
 
         <li><%= render partial: 'shared/search_form'%></li>
       </ul>
