@@ -6,7 +6,7 @@ class MovesController < ApplicationController
   # GET /moves
   # GET /moves.json
   def index
-    @moves = Move.all
+    @moves = Move.order(:name).page(params[:page])
   end
 
   # GET /moves/1
@@ -69,7 +69,7 @@ class MovesController < ApplicationController
   def set_move
     @move = Move.find(params[:id])
   end
-  
+
   # Only allow a list of trusted parameters through.
   def move_params
     params.require(:move).permit(:name, :power, :pp, :type)

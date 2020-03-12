@@ -2,6 +2,14 @@
 <% if @moves.empty? %>
  <p> There are no Moves in the Pokedex </p>
 <% else %>
+<div class="title">
+  <div class="column is-one-third">
+    <%= paginate @moves, window: 6%>
+  </div>
+</div>
+<div class="subtitle">
+  <%= page_entries_info @moves, entry_name: 'item' %>
+</div>
 <div class = "columns is-multiline">
     <% @moves.each do |move| %>
      <div class="column is-one-third">
@@ -24,5 +32,10 @@
   <%end%>
 </div>
 <% end %>
+<div class="title">
+  <div class="column is-one-third">
+    <%= paginate @moves, window: 6%>
+  </div>
+</div>
 
 
