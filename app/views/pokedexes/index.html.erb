@@ -2,9 +2,16 @@
 <% if @pokedexes.empty? %>
  <p> There are no Pokemon in the Pokedex </p>
 <% else %>
+<div class="title">
+  <div class="column is-one-third">
+    <%= paginate @pokedexes, window: 6%>
+  </div>
+</div>
+<div class="subtitle">
+  <%= page_entries_info @pokedexes, entry_name: 'item' %>
+</div>
 <div class = "columns is-multiline">
     <% @pokedexes.each do |pokedex| %>
-
      <div class="column is-one-third">
       <div class="card">
         <div class="title">
@@ -22,34 +29,16 @@
         </div>
         </div>
       </div>
-
     <% end %>
+  <% end %>
 </div>
 
-
-
-
-<div class = "column is-multiline">
-<div class="column is-one-third">
-  <div class="card">
-    <div class="card-content">
-      <div class="title">
-        <% @pokedexes.each do |pokedex| %>
-          <%= link_to pokedex.name, pokedex %>
-          <p class="card-footer-item"><%= pokedex.name %></p>
-          <p class="card-footer-item"><%= pokedex.hp %></p>
-          <p class="card-footer-item"><%= pokedex.def %></p>
-          <% pokedex.ptypes.each do |type| %>
-            <p class="card-footer-item"> <%= type.poke_type %> </p>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+<div class="title">
+  <div class="column is-one-third">
+    <%= paginate @pokedexes, window: 6%>
   </div>
 </div>
-</div>
-<% end %>
 
 
-<br>
+
 

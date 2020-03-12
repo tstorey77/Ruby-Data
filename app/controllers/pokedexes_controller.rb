@@ -6,7 +6,8 @@ class PokedexesController < ApplicationController
   # GET /pokedexes
   # GET /pokedexes.json
   def index
-    @pokedexes = Pokedex.all
+    # @pokedexes = Pokedex.all
+    @pokedexes = Pokedex.order(:id).page(params[:page])
   end
 
   def search
