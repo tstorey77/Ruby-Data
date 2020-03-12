@@ -1,26 +1,24 @@
 <p id="notice"><%= notice %></p>
-<% if @pokedexes.empty? %>
- <p> There are no Pokemon in the Pokedex </p>
-<% else %>
-<div class = "columns is-multiline">
-    <% @pokedexes.each do |pokedex| %>
-     <div class="column is-one-third">
-      <div class="card">
-        <div class="title">
-          <%= link_to pokedex.name, pokedex %>
-        </div>
-        <div class="card-content">
-          <p> Stats: </p>
-          <p class="card-footer-item"> Hit points: <%= pokedex.hp %></p>
-          <p class="card-footer-item"> Attack: <%= pokedex.att %></p>
-          <p class="card-footer-item"> Defence: <%= pokedex.def %></p>
-          <p> Type(s): </p>
-          <% pokedex.ptypes.each do |type| %>
-            <p class="card-footer-item"> <%= link_to type.poke_type, type %> </p>
-          <% end %>
-        </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+
+<div class="column is-one-third">
+  <div class="card">
+    <div class="title">
+      <% if show_link %>
+        <%= link_to pokedex.name, pokedex %>
+      <% else %>
+        <%= pokedex.name %>
+      <% end %>
+    </div>
+    <div class="card-content">
+      <p> Stats: </p>
+      <p class="card-footer-item"> Hit points: <%= pokedex.hp %></p>
+      <p class="card-footer-item"> Attack: <%= pokedex.att %></p>
+      <p class="card-footer-item"> Defence: <%= pokedex.def %></p>
+      <p> Type(s): </p>
+      <% pokedex.ptypes.each do |type| %>
+          <p class="card-footer-item"> <%= link_to type.poke_type, type %> </p>
+      <% end %>
+    </div>
+  </div>
 </div>
+
